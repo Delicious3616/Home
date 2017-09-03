@@ -43,8 +43,14 @@ app.controller('mainCtrl', ['$scope', '$http', function ($scope, $http) {
     $scope.hasMore = true;
     $scope.myInput = "";
     //发起网络请求获取数据
+     var url;
+      if(isDebug){
+          url = 'data/dish_getbypage.php?start=0';
+      }else{
+          url = 'data/mockData/dish_getbypage.json';
+      }
     $http
-      .get('data/dish_getbypage.php?start=0')
+      .get(url)
       .success(function (data) {
         console.log(data);
         $scope.dishList = data;
@@ -52,8 +58,14 @@ app.controller('mainCtrl', ['$scope', '$http', function ($scope, $http) {
 
     //给button定义加载更多的方法
     $scope.loadMore = function () {
+      var url;
+      if(isDebug){
+          url = 'data/dish_getbypage.php?start=' + $scope.dishList.length;
+      }else{
+          url = 'data/mockData/dish_getbypage.json';
+      }
       $http
-        .get('data/dish_getbypage.php?start=' + $scope.dishList.length)
+        .get(url)
         .success(function (data) {
 
           if (data.length < 5) {
@@ -90,6 +102,7 @@ app.controller('mainCtrl', ['$scope', '$http', function ($scope, $http) {
 app.controller("shareDetail",["$scope","$http","$routeParams",function($scope, $http,$routeParams){
     console.log($routeParams);
     $http.get('data/dish_getbyid.php?id='+$routeParams.id)
+    // $http.get('data/mockData/list_detail_'+$routeParams.id+'.json')
     .success(function(data){
       $scope.dish=data;
     })

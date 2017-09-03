@@ -11,19 +11,19 @@
     <span class="form-control-feedback glyphicon glyphicon-search"></span>
   </div>
   <!--缩略图列表-->
-  <div class="list-group">
+  <div class="list-group ">
     <a
       ng-repeat="dish in dishList"
-      class="list-group-item"
+      class="list-group-item "
       href="#/shareDetail/{{dish.did}}">
-      <div class="media">
+      <div class="media ">
         <div class="media-left media-middle">
-          <img ng-src="img/{{dish.img_sm}}" class="mainListImg" alt=""/>
+          <img ng-src="img/{{dish.img_sm}}" class="mainListImg animated fadeInUpBig" alt=""/>
         </div>
-        <div class="media-body">
-          <h1>{{dish.name}}</h1>
-          <p>简介：{{dish.material}}</p>
-          <p>宝宝大小：{{dish.price | number:0 }}个月</p>
+        <div class="media-body ">
+          <h1 class="animated fadeInLeftBig">{{dish.name}}</h1>
+          <p class="animated fadeInDownBig">简介：{{dish.material}}</p>
+          <p class="animated fadeInRightBig">宝宝大小：{{dish.price | number:0 }}个月</p>
         </div>
       </div>
     </a>

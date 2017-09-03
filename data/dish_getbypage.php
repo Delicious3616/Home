@@ -2,7 +2,7 @@
 header('Content-Type:application/json');
 
 @$start = $_REQUEST['start'];
-$count = 5;
+$count = 10;
 
 $conn =
 mysqli_connect('127.0.0.1','root','','kaifanla');
@@ -21,7 +21,7 @@ while(true)
   }
   $output[] = $row;
 }
-
+file_put_contents("mockData/dish_getbypage.json",  json_encode($output));
 echo json_encode($output);
 
 ?>

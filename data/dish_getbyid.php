@@ -19,10 +19,12 @@ $result = mysqli_query($conn,$sql);
 $row = mysqli_fetch_assoc($result);
 if(empty($row))
 {
+	file_put_contents("mockData/dish_getbyid.json", '[]');
   echo '[]';
 }
 else
 {
+	file_put_contents("mockData/dish_getbyid.json", json_encode($row));
   echo json_encode($row);
 }
 
