@@ -101,7 +101,12 @@ app.controller('mainCtrl', ['$scope', '$http', function ($scope, $http) {
 )
 app.controller("shareDetail",["$scope","$http","$routeParams",function($scope, $http,$routeParams){
     console.log($routeParams);
-    $http.get('data/dish_getbyid.php?id='+$routeParams.id)
+    if(isDebug){
+          url = 'data/dish_getbyid.php?id='+$routeParams.id;
+      }else{
+          url = 'data/mockData/dish_getbyid'+(parseInt($routeParams.id)+2)+'.json';
+      }
+    $http.get(url)
     // $http.get('data/mockData/list_detail_'+$routeParams.id+'.json')
     .success(function(data){
       $scope.dish=data;
