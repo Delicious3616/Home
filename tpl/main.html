@@ -1,0 +1,41 @@
+<div ng-include="'tpl/include/header.html'"></div>
+
+<div class="container">
+  <!--输入框-->
+  <div class="form-group has-feedback search">
+    <input
+      ng-model="myInput"
+      type="text"
+      class="form-control"
+      placeholder="请输入标题和简介关键词"/>
+    <span class="form-control-feedback glyphicon glyphicon-search"></span>
+  </div>
+  <!--缩略图列表-->
+  <div class="list-group">
+    <a
+      ng-repeat="dish in dishList"
+      class="list-group-item"
+      href="#/shareDetail/{{dish.did}}">
+      <div class="media">
+        <div class="media-left media-middle">
+          <img ng-src="img/{{dish.img_sm}}" class="mainListImg" alt=""/>
+        </div>
+        <div class="media-body">
+          <h1>{{dish.name}}</h1>
+          <p>简介：{{dish.material}}</p>
+          <p>宝宝大小：{{dish.price | number:0 }}个月</p>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <button
+    ng-show="hasMore"
+    ng-click="loadMore()"
+    class="btn btn-success btn-block">
+    加载更多
+  </button>
+  <p ng-hide="hasMore">没有更多数据可以加载了</p>
+  <!--加载更多的按钮-->
+</div>
+<div ng-include="'tpl/include/footer.html'"></div>
